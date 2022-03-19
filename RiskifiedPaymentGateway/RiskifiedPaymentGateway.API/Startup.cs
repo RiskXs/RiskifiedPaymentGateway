@@ -12,6 +12,7 @@ using RiskifiedPaymentGateway.API.Services;
 using RiskifiedPaymentGateway.API.Validators;
 using RiskifiedPaymentGateway.Charging.BL;
 using RiskifiedPaymentGateway.Charging.BL.CreditCardChargers;
+using RiskifiedPaymentGateway.Charging.BL.HttpPolicies;
 using RiskifiedPaymentGateway.Charging.DAL;
 using RiskifiedPaymentGateway.Core.Model;
 using System;
@@ -47,8 +48,8 @@ namespace RiskifiedPaymentGateway.API
             services.AddScoped<IChargingManager, ChargingManager>();
             services.AddSingleton<IChargeStatusRepository, InMemoryChargeStatusRepository>();
 
-            services.AddHttpClient(RetryChargingPolicy.Name)
-                        .AddPolicyHandler(RetryChargingPolicy.GetRetryPolicy(3));
+            services.AddHttpClient<MasterCardCreditCardCharger>()
+                        .AddPolicyHandler(MasterCardHttpRetryPolicy.GetRetryPolicy(3));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

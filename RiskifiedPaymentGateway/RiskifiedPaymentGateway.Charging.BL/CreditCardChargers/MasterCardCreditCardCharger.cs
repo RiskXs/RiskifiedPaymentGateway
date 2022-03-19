@@ -13,12 +13,12 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
     public class MasterCardCreditCardCharger : ICreditCardCharger
     {
         private readonly IOptions<MasterCardChargingSettings> _masterCardChargingSettings;
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly HttpClient _httpClient;
 
-        public MasterCardCreditCardCharger(IOptions<MasterCardChargingSettings> masterCardChargingSettings, IHttpClientFactory httpClientFactory)
+        public MasterCardCreditCardCharger(IOptions<MasterCardChargingSettings> masterCardChargingSettings, HttpClient httpClient)
         {
             _masterCardChargingSettings = masterCardChargingSettings;
-            _httpClientFactory = httpClientFactory;
+            _httpClient = httpClient;
         }
         public async Task<TransactionResult> ChargeCreditCard(TransactionPayload payload)
         {
@@ -44,7 +44,7 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
 
         private Task<HttpResponseMessage> Charge(HttpRequestMessage request)
         {
-            return _httpClientFactory.CreateClient(RetryChargingPolicy.Name).SendAsync(request);
+            return _httpClient.SendAsync(request);
         }
 
         private async Task<TransactionResult> ConvertToTransactionResult(HttpResponseMessage response)
