@@ -35,6 +35,11 @@ namespace RiskifiedPaymentGateway.API.Validators
                 yield return new ValidationResult($"Credit card company {request.CreditCardCompany} is not supported");
             }
 
+            var regex = "(0[1-9]|1[0-2])/?(([0-9]{4})|[0-9]{2}$)";
+            if (!Regex.IsMatch(request.ExpirationDate, regex)){
+                yield return new ValidationResult("Invalid date format");
+            }
+
             if (!ExpirationDateIsValid(request.ExpirationDate))
             {
                 yield return new ValidationResult("Invalid date");
