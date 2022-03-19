@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RiskifiedPaymentGateway.Utils
 {
-    public class CVVDateUtility
+    public class ExpirationDateUtility
     {
         public static bool TryToConvertCVVDate(string cvvDateStr, out DateTime cvvDate)
         {

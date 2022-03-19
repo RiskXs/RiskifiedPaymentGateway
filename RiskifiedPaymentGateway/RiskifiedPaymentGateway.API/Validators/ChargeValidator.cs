@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace RiskifiedPaymentGateway.API.Validators
@@ -59,7 +60,7 @@ namespace RiskifiedPaymentGateway.API.Validators
         private bool ExpirationDateIsValid(string expirationDateStr)
         {
             DateTime expirationDate;
-            return CVVDateUtility.TryToConvertCVVDate(expirationDateStr, out expirationDate);
+            return ExpirationDateUtility.TryToConvertCVVDate(expirationDateStr, out expirationDate);
 
         }
     }

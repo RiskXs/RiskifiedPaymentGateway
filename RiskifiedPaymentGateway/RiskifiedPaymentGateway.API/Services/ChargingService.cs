@@ -51,7 +51,7 @@ namespace RiskifiedPaymentGateway.API.Services
             var firstName =  splittedName[0];
             var lastName = splittedName[1];
             DateTime expirationDate;
-            CVVDateUtility.TryToConvertCVVDate(request.ExpirationDate, out expirationDate);
+            ExpirationDateUtility.TryToConvertCVVDate(request.ExpirationDate, out expirationDate);
 
             return new TransactionPayload
             {
