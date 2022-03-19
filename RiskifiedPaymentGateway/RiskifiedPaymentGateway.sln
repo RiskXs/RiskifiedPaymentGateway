@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskifiedPaymentGateway.API", "RiskifiedPaymentGateway.API\RiskifiedPaymentGateway.API.csproj", "{A4DA065E-97AB-4AA2-85FF-A6A5AC3BAB9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiskifiedPaymentGateway.API", "RiskifiedPaymentGateway.API\RiskifiedPaymentGateway.API.csproj", "{A4DA065E-97AB-4AA2-85FF-A6A5AC3BAB9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskifiedPaymentGateway.Utils", "RiskifiedPaymentGateway.Utils\RiskifiedPaymentGateway.Utils.csproj", "{E2862959-98A3-4341-B31D-DCED844A99DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiskifiedPaymentGateway.Utils", "RiskifiedPaymentGateway.Utils\RiskifiedPaymentGateway.Utils.csproj", "{E2862959-98A3-4341-B31D-DCED844A99DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{756CA9DE-16C6-44B5-8E6A-70BCFA2B3983}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskifiedPaymentGateway.Core.Model", "RiskifiedPaymentGateway.Core.Model\RiskifiedPaymentGateway.Core.Model.csproj", "{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{E2862959-98A3-4341-B31D-DCED844A99DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2862959-98A3-4341-B31D-DCED844A99DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2862959-98A3-4341-B31D-DCED844A99DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5} = {756CA9DE-16C6-44B5-8E6A-70BCFA2B3983}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {90EEDA87-2428-4D75-BBB8-D8B085B37D7E}

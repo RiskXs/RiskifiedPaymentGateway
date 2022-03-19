@@ -1,4 +1,5 @@
 ﻿using RiskifiedPaymentGateway.API.DTOs;
+using RiskifiedPaymentGateway.Core.Model;
 using RiskifiedPaymentGateway.Utils.ExtentsionMethods.String;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,11 @@ namespace RiskifiedPaymentGateway.API.Validators
                 yield return new ValidationResult("Invalid field was detected");
             }
 
+            if (!IsCreditCardCompanySupported(request.CreditCardCompany))
+            {
+                yield return new ValidationResult($"Credit card company {request.CreditCardCompany} is not supported");
+            }
+
             if (!ExpirationDateIsValid(request.ExpirationDate))
             {
                 yield return new ValidationResult("Invalid date");
@@ -36,6 +42,12 @@ namespace RiskifiedPaymentGateway.API.Validators
                             request.ExpirationDate.IsNullOrEmpty() ||
                             request.CVV.IsNullOrEmpty() ||
                             request.Amount == null;
+        }
+
+        private bool IsCreditCardCompanySupported(string creditCardCompany)
+        {
+            return Enum.GetNames(typeof(CreditCardCompanies))
+                .Any(company => company.ToLower() == creditCardCompany.ToLower());
         }
 
         private bool ExpirationDateIsValid(string expirationDateStr)
