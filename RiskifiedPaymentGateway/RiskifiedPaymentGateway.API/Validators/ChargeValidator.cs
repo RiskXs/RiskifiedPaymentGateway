@@ -1,5 +1,6 @@
 ﻿using RiskifiedPaymentGateway.API.DTOs;
 using RiskifiedPaymentGateway.Core.Model;
+using RiskifiedPaymentGateway.Utils;
 using RiskifiedPaymentGateway.Utils.ExtentsionMethods.String;
 using System;
 using System.Collections.Generic;
@@ -57,10 +58,8 @@ namespace RiskifiedPaymentGateway.API.Validators
 
         private bool ExpirationDateIsValid(string expirationDateStr)
         {
-            string expirationDateWithMonthDay = $"1/{expirationDateStr}";
             DateTime expirationDate;
-
-            return DateTime.TryParse(expirationDateWithMonthDay, out expirationDate);
+            return CVVDateUtility.TryToConvertCVVDate(expirationDateStr, out expirationDate);
 
         }
     }

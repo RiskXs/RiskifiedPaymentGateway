@@ -4,6 +4,7 @@ using RiskifiedPaymentGateway.Charging.BL;
 using RiskifiedPaymentGateway.Charging.BL.Models;
 using RiskifiedPaymentGateway.Charging.Model;
 using RiskifiedPaymentGateway.Core.Model;
+using RiskifiedPaymentGateway.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,7 +50,8 @@ namespace RiskifiedPaymentGateway.API.Services
             var splittedName = request.FullName.Trim().Split(" ");
             var firstName =  splittedName[0];
             var lastName = splittedName[1];
-            DateTime expirationDate = DateTime.Parse($"1/{request.ExpirationDate}");
+            DateTime expirationDate;
+            CVVDateUtility.TryToConvertCVVDate(request.ExpirationDate, out expirationDate);
 
             return new TransactionPayload
             {
