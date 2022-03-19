@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{756CA9DE-1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskifiedPaymentGateway.Core.Model", "RiskifiedPaymentGateway.Core.Model\RiskifiedPaymentGateway.Core.Model.csproj", "{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Charging", "Charging", "{39585EEF-3C6B-4ED9-A78F-E6FF954B1A7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskifiedPaymentGateway.Charging.BL", "RiskifiedPaymentGateway.Charging.BL\RiskifiedPaymentGateway.Charging.BL.csproj", "{46289B3E-56DB-41B1-A4E0-FD38A3EB28DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +33,17 @@ Global
 		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46289B3E-56DB-41B1-A4E0-FD38A3EB28DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46289B3E-56DB-41B1-A4E0-FD38A3EB28DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46289B3E-56DB-41B1-A4E0-FD38A3EB28DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46289B3E-56DB-41B1-A4E0-FD38A3EB28DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EE5AAA43-BD3E-4FEC-A8BE-B55231295FD5} = {756CA9DE-16C6-44B5-8E6A-70BCFA2B3983}
+		{46289B3E-56DB-41B1-A4E0-FD38A3EB28DD} = {39585EEF-3C6B-4ED9-A78F-E6FF954B1A7C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {90EEDA87-2428-4D75-BBB8-D8B085B37D7E}
