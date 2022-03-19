@@ -15,6 +15,12 @@ namespace RiskifiedPaymentGateway.API.Validators
     }
     public class ChargeValidator : IChargeValidator
     {
+        private readonly ICreditCardCompanyValidator _creditCardCompanyValidator;
+
+        public ChargeValidator(ICreditCardCompanyValidator creditCardCompanyValidator)
+        {
+            _creditCardCompanyValidator = creditCardCompanyValidator;
+        }
         public IEnumerable<ValidationResult> IsChargingRequestValid(ChargeRequest request)
         {
             if (RequestFieldsAreInvalid(request))
@@ -46,8 +52,7 @@ namespace RiskifiedPaymentGateway.API.Validators
 
         private bool IsCreditCardCompanySupported(string creditCardCompany)
         {
-            return Enum.GetNames(typeof(CreditCardCompany))
-                .Any(company => company.ToLower() == creditCardCompany.ToLower());
+            return _creditCardCompanyValidator.IsCreditCardCompanySupported(creditCardCompany);
         }
 
         private bool ExpirationDateIsValid(string expirationDateStr)

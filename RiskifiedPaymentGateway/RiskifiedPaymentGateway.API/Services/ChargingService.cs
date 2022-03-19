@@ -25,7 +25,7 @@ namespace RiskifiedPaymentGateway.API.Services
         
         public async Task<ChargingResult> ChargeCreditCard(ChargeRequest request)
         {
-            var creditCardCompany = GetCreditCardCompany(request.CreditCardCompany);
+            var creditCardCompany = request.CreditCardCompany;
             var transactionPayload = ConvertToTransactionPayload(request);
             var payloadResult = await _chargingManager.ChargeCreditCard(creditCardCompany, transactionPayload);
 
@@ -34,12 +34,6 @@ namespace RiskifiedPaymentGateway.API.Services
                 IsSuccess = payloadResult.IsSuccess,
                 error = payloadResult.ReasonForFailure
             };
-        }
-
-        private CreditCardCompany GetCreditCardCompany(string company)
-        {
-            var companyName = Enum.GetNames(typeof(CreditCardCompany)).FirstOrDefault(supportedCompany => supportedCompany.ToLower() == company.ToLower());
-            return (CreditCardCompany)Enum.Parse(typeof(CreditCardCompany), companyName);
         }
 
         private TransactionPayload ConvertToTransactionPayload(ChargeRequest request)

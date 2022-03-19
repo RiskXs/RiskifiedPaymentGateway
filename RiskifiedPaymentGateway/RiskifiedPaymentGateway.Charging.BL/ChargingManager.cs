@@ -11,7 +11,7 @@ namespace RiskifiedPaymentGateway.Charging.BL
 {
     public interface IChargingManager
     {
-        Task<TransactionResult> ChargeCreditCard(CreditCardCompany creditCardCompany, TransactionPayload payload);
+        Task<TransactionResult> ChargeCreditCard(string creditCardCompany, TransactionPayload payload);
     }
     public class ChargingManager : IChargingManager
     {
@@ -21,7 +21,7 @@ namespace RiskifiedPaymentGateway.Charging.BL
             _creditCardChargerFactory = creditCardChargerFactory;
         }
 
-        public Task<TransactionResult> ChargeCreditCard(CreditCardCompany creditCardCompany, TransactionPayload payload)
+        public Task<TransactionResult> ChargeCreditCard(string creditCardCompany, TransactionPayload payload)
         {
             var creditCardCharger = _creditCardChargerFactory.Get(creditCardCompany);
 

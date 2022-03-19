@@ -9,7 +9,7 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
 {
     public interface ICreditCardChargerFactory
     {
-        ICreditCardCharger Get(CreditCardCompany company);
+        ICreditCardCharger Get(string company);
     }
     public class CreditCardChargerFactory
     {
@@ -19,7 +19,7 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
         {
             _serviceProvider = serviceProvider;
         }
-        public ICreditCardCharger Get(CreditCardCompany company)
+        public ICreditCardCharger Get(string company)
         {
             switch (company)
             {
