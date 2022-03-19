@@ -9,12 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RiskifiedPaymentGateway.Charging.BL\RiskifiedPaymentGateway.Charging.BL.csproj" />
     <ProjectReference Include="..\RiskifiedPaymentGateway.Core.Model\RiskifiedPaymentGateway.Core.Model.csproj" />
     <ProjectReference Include="..\RiskifiedPaymentGateway.Utils\RiskifiedPaymentGateway.Utils.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

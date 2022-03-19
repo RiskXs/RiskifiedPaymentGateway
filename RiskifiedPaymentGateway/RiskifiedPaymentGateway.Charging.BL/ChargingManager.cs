@@ -21,11 +21,11 @@ namespace RiskifiedPaymentGateway.Charging.BL
             _creditCardChargerFactory = creditCardChargerFactory;
         }
 
-        public async Task<TransactionResult> ChargeCreditCard(CreditCardCompany creditCardCompany, TransactionPayload payload)
+        public Task<TransactionResult> ChargeCreditCard(CreditCardCompany creditCardCompany, TransactionPayload payload)
         {
             var creditCardCharger = _creditCardChargerFactory.Get(creditCardCompany);
 
-            return await creditCardCharger.ChargeCreditCard(payload);
+            return creditCardCharger.ChargeCreditCard(payload);
         }
     }
 }
