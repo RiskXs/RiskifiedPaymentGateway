@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskifiedPaymentGateway.API", "RiskifiedPaymentGateway.API\RiskifiedPaymentGateway.API.csproj", "{A4DA065E-97AB-4AA2-85FF-A6A5AC3BAB9E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskifiedPaymentGateway.Utils", "RiskifiedPaymentGateway.Utils\RiskifiedPaymentGateway.Utils.csproj", "{E2862959-98A3-4341-B31D-DCED844A99DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A4DA065E-97AB-4AA2-85FF-A6A5AC3BAB9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4DA065E-97AB-4AA2-85FF-A6A5AC3BAB9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4DA065E-97AB-4AA2-85FF-A6A5AC3BAB9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2862959-98A3-4341-B31D-DCED844A99DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2862959-98A3-4341-B31D-DCED844A99DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2862959-98A3-4341-B31D-DCED844A99DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2862959-98A3-4341-B31D-DCED844A99DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
