@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace RiskifiedPaymentGateway.Charging.BL
+namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
 {
     public interface ICreditCardCharger
     {

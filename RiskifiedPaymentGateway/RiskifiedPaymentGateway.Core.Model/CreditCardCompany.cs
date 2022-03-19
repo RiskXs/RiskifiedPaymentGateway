@@ -2,7 +2,7 @@
 
 namespace RiskifiedPaymentGateway.Core.Model
 {
-    public enum CreditCardCompanies
+    public enum CreditCardCompany
     {
         Visa,
         MasterCard

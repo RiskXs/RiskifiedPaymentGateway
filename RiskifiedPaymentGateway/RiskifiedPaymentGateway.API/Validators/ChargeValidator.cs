@@ -46,7 +46,7 @@ namespace RiskifiedPaymentGateway.API.Validators
 
         private bool IsCreditCardCompanySupported(string creditCardCompany)
         {
-            return Enum.GetNames(typeof(CreditCardCompanies))
+            return Enum.GetNames(typeof(CreditCardCompany))
                 .Any(company => company.ToLower() == creditCardCompany.ToLower());
         }
 
