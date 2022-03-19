@@ -36,7 +36,9 @@ namespace RiskifiedPaymentGateway.API
             services.AddScoped<ICreditCardCompanyValidator, CreditCardCompany>();
             //Charging
             services.AddOptions<VisaChargingSettings>().BindConfiguration("Visa:Charging");
+            services.AddOptions<MasterCardChargingSettings>().BindConfiguration("MasterCard:Charging");
             services.AddScoped<VisaCreditCardCharger>();
+            services.AddScoped<MasterCardCreditCardCharger>();
             services.AddScoped<ICreditCardChargerFactory, CreditCardChargerFactory>();
             services.AddScoped<IChargingManager, ChargingManager>();
 

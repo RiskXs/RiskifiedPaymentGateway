@@ -27,6 +27,11 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
                 return GetCreditCardCharger<VisaCreditCardCharger>();
             }
 
+            if (lowerCaseCompany == CreditCardCompany.MasterCard.ToLower())
+            {
+                return GetCreditCardCharger<MasterCardCreditCardCharger>();
+            }
+
             throw new NotSupportedException($"No charger for {company}");
         }
 

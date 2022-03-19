@@ -29,11 +29,6 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
             return transactionResult;
         }
 
-        private Task<HttpResponseMessage> Charge(HttpRequestMessage request)
-        {
-            return _httpClientFactory.CreateClient().SendAsync(request);
-        }
-
         private HttpRequestMessage GenerateHttpRequest(TransactionPayload payload)
         {
             HttpRequestMessage requestMessage = new HttpRequestMessage();
@@ -46,6 +41,11 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
 
             return requestMessage;
         }
+        private Task<HttpResponseMessage> Charge(HttpRequestMessage request)
+        {
+            return _httpClientFactory.CreateClient().SendAsync(request);
+        }
+
 
         private JsonContent GenerateRequestContent(TransactionPayload payload)
         {

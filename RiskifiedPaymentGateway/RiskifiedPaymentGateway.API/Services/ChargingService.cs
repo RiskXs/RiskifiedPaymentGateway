@@ -33,7 +33,7 @@ namespace RiskifiedPaymentGateway.API.Services
             return new ChargingResult
             {
                 IsSuccess = payloadResult.IsSuccess,
-                error = CardDeclinedMessage
+                error = payloadResult.IsSuccess ? String.Empty : CardDeclinedMessage
             };
         }
 
