@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using RiskifiedPaymentGateway.Charging.BL.HttpPolicies;
 using RiskifiedPaymentGateway.Charging.BL.Models;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
         }
         private Task<HttpResponseMessage> Charge(HttpRequestMessage request)
         {
-            return _httpClientFactory.CreateClient().SendAsync(request);
+            return _httpClientFactory.CreateClient(VisaHttpPolicy.Name).SendAsync(request);
         }
 
 

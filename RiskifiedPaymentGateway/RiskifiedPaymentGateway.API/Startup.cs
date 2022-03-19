@@ -48,7 +48,9 @@ namespace RiskifiedPaymentGateway.API
             services.AddScoped<IChargingManager, ChargingManager>();
             services.AddSingleton<IChargeStatusRepository, InMemoryChargeStatusRepository>();
 
-            services.AddHttpClient<MasterCardCreditCardCharger>()
+            services.AddHttpClient(MasterCardHttpRetryPolicy.Name)
+                        .AddPolicyHandler(MasterCardHttpRetryPolicy.GetRetryPolicy(3));
+            services.AddHttpClient(VisaHttpPolicy.Name)
                         .AddPolicyHandler(MasterCardHttpRetryPolicy.GetRetryPolicy(3));
             services.AddControllers();
             services.AddSwaggerGen(c =>

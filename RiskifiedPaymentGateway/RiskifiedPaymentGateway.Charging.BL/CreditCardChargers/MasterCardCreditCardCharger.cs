@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using RiskifiedPaymentGateway.Charging.BL.HttpPolicies;
 using RiskifiedPaymentGateway.Charging.BL.Models;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,12 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
     public class MasterCardCreditCardCharger : ICreditCardCharger
     {
         private readonly IOptions<MasterCardChargingSettings> _masterCardChargingSettings;
-        private readonly HttpClient _httpClient;
+        private readonly IHttpClientFactory _httpClientFactory;
 
-        public MasterCardCreditCardCharger(IOptions<MasterCardChargingSettings> masterCardChargingSettings, HttpClient httpClient)
+        public MasterCardCreditCardCharger(IOptions<MasterCardChargingSettings> masterCardChargingSettings, IHttpClientFactory httpClientFactory)
         {
             _masterCardChargingSettings = masterCardChargingSettings;
-            _httpClient = httpClient;
+            _httpClientFactory = httpClientFactory;
         }
         public async Task<TransactionResult> ChargeCreditCard(TransactionPayload payload)
         {
@@ -44,7 +45,7 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
 
         private Task<HttpResponseMessage> Charge(HttpRequestMessage request)
         {
-            return _httpClient.SendAsync(request);
+            return _httpClientFactory.CreateClient(MasterCardHttpRetryPolicy.Name).SendAsync(request);
         }
 
         private async Task<TransactionResult> ConvertToTransactionResult(HttpResponseMessage response)
