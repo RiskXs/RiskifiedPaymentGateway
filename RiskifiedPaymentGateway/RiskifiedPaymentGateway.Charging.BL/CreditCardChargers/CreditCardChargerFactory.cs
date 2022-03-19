@@ -11,7 +11,7 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
     {
         ICreditCardCharger Get(string company);
     }
-    public class CreditCardChargerFactory
+    public class CreditCardChargerFactory: ICreditCardChargerFactory
     {
         private readonly IServiceProvider _serviceProvider;
 
@@ -21,13 +21,13 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
         }
         public ICreditCardCharger Get(string company)
         {
-            switch (company)
+            string lowerCaseCompany = company.ToLower();
+            if(lowerCaseCompany == CreditCardCompany.Visa.ToLower())
             {
-                case CreditCardCompany.Visa:
-                    return GetCreditCardCharger<VisaCreditCardCharger>();
-                default:
-                    throw new NotSupportedException($"No charger for {company}");
+                return GetCreditCardCharger<VisaCreditCardCharger>();
             }
+
+            throw new NotSupportedException($"No charger for {company}");
         }
 
         private ICreditCardCharger GetCreditCardCharger<T>() where T: ICreditCardCharger

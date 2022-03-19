@@ -17,6 +17,7 @@ namespace RiskifiedPaymentGateway.API.Services
     public class ChargingService : IChargingService
     {
         private readonly IChargingManager _chargingManager;
+        private readonly string CardDeclinedMessage = "Card declined";
 
         public ChargingService(IChargingManager chargingManager)
         {
@@ -32,7 +33,7 @@ namespace RiskifiedPaymentGateway.API.Services
             return new ChargingResult
             {
                 IsSuccess = payloadResult.IsSuccess,
-                error = payloadResult.ReasonForFailure
+                error = CardDeclinedMessage
             };
         }
 

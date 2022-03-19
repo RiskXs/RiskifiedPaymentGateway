@@ -6,7 +6,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using RiskifiedPaymentGateway.API.Services;
 using RiskifiedPaymentGateway.API.Validators;
+using RiskifiedPaymentGateway.Charging.BL;
+using RiskifiedPaymentGateway.Charging.BL.CreditCardChargers;
+using RiskifiedPaymentGateway.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +31,16 @@ namespace RiskifiedPaymentGateway.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IChargeValidator, ChargeValidator>();
+            services.AddScoped<IChargingService, ChargingService>();
+            // Core
+            services.AddScoped<ICreditCardCompanyValidator, CreditCardCompany>();
+            //Charging
+            services.AddOptions<VisaChargingSettings>().BindConfiguration("Visa:Charging");
+            services.AddScoped<VisaCreditCardCharger>();
+            services.AddScoped<ICreditCardChargerFactory, CreditCardChargerFactory>();
+            services.AddScoped<IChargingManager, ChargingManager>();
 
+            services.AddHttpClient();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
