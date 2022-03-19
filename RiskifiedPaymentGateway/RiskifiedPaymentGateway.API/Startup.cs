@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Polly;
+using Polly.Extensions.Http;
 using RiskifiedPaymentGateway.API.Services;
 using RiskifiedPaymentGateway.API.Validators;
 using RiskifiedPaymentGateway.Charging.BL;
@@ -14,6 +16,7 @@ using RiskifiedPaymentGateway.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace RiskifiedPaymentGateway.API
@@ -42,7 +45,8 @@ namespace RiskifiedPaymentGateway.API
             services.AddScoped<ICreditCardChargerFactory, CreditCardChargerFactory>();
             services.AddScoped<IChargingManager, ChargingManager>();
 
-            services.AddHttpClient();
+            services.AddHttpClient(RetryChargingPolicy.Name)
+                        .AddPolicyHandler(RetryChargingPolicy.GetRetryPolicy(3));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

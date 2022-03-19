@@ -44,7 +44,7 @@ namespace RiskifiedPaymentGateway.Charging.BL.CreditCardChargers
 
         private Task<HttpResponseMessage> Charge(HttpRequestMessage request)
         {
-            return _httpClientFactory.CreateClient().SendAsync(request);
+            return _httpClientFactory.CreateClient(RetryChargingPolicy.Name).SendAsync(request);
         }
 
         private async Task<TransactionResult> ConvertToTransactionResult(HttpResponseMessage response)

@@ -5,6 +5,7 @@ using RiskifiedPaymentGateway.API.Services;
 using RiskifiedPaymentGateway.API.Validators;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -47,9 +48,11 @@ namespace RiskifiedPaymentGateway.API.Controllers
             }
 
             // Note: Normally .NET returns 500 in case of uncaught exceptions but since the requirement says empty body I implmeneted this myself 
-            catch (Exception)
+            catch (Exception e)
             {
+                Debug.WriteLine(e);
                 return new ObjectResult(null) { StatusCode = (int)HttpStatusCode.InternalServerError };
+
             }
         }
 
