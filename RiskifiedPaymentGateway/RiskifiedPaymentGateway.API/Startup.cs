@@ -12,6 +12,7 @@ using RiskifiedPaymentGateway.API.Services;
 using RiskifiedPaymentGateway.API.Validators;
 using RiskifiedPaymentGateway.Charging.BL;
 using RiskifiedPaymentGateway.Charging.BL.CreditCardChargers;
+using RiskifiedPaymentGateway.Charging.DAL;
 using RiskifiedPaymentGateway.Core.Model;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,7 @@ namespace RiskifiedPaymentGateway.API
             services.AddScoped<MasterCardCreditCardCharger>();
             services.AddScoped<ICreditCardChargerFactory, CreditCardChargerFactory>();
             services.AddScoped<IChargingManager, ChargingManager>();
+            services.AddSingleton<IChargeStatusRepository, InMemoryChargeStatusRepository>();
 
             services.AddHttpClient(RetryChargingPolicy.Name)
                         .AddPolicyHandler(RetryChargingPolicy.GetRetryPolicy(3));

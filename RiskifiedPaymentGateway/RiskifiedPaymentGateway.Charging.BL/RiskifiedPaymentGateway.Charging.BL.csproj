@@ -12,6 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RiskifiedPaymentGateway.Charging.DAL\RiskifiedPaymentGateway.Charging.DAL.csproj" />
+    <ProjectReference Include="..\RiskifiedPaymentGateway.Charging.Model\RiskifiedPaymentGateway.Charging.Model.csproj" />
     <ProjectReference Include="..\RiskifiedPaymentGateway.Core.Model\RiskifiedPaymentGateway.Core.Model.csproj" />
   </ItemGroup>
 

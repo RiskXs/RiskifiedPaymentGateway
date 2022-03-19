@@ -2,6 +2,7 @@
 using RiskifiedPaymentGateway.API.Models;
 using RiskifiedPaymentGateway.Charging.BL;
 using RiskifiedPaymentGateway.Charging.BL.Models;
+using RiskifiedPaymentGateway.Charging.Model;
 using RiskifiedPaymentGateway.Core.Model;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace RiskifiedPaymentGateway.API.Services
     public interface IChargingService
     {
         Task<ChargingResult> ChargeCreditCard(ChargeRequest request);
+        Task<IEnumerable<ChargeStatusStatistics>> GetChargeStatuses(string merchantId);
     }
     public class ChargingService : IChargingService
     {
@@ -28,13 +30,18 @@ namespace RiskifiedPaymentGateway.API.Services
         {
             var creditCardCompany = request.CreditCardCompany;
             var transactionPayload = ConvertToTransactionPayload(request);
-            var payloadResult = await _chargingManager.ChargeCreditCard(creditCardCompany, transactionPayload);
+            var payloadResult = await _chargingManager.ChargeCreditCard(request.MerchantIdentifier, creditCardCompany, transactionPayload);
 
             return new ChargingResult
             {
                 IsSuccess = payloadResult.IsSuccess,
                 error = payloadResult.IsSuccess ? String.Empty : CardDeclinedMessage
             };
+        }
+
+        public Task<IEnumerable<ChargeStatusStatistics>> GetChargeStatuses(string merchantId)
+        {
+            return _chargingManager.GetChargeStatuses(merchantId);
         }
 
         private TransactionPayload ConvertToTransactionPayload(ChargeRequest request)

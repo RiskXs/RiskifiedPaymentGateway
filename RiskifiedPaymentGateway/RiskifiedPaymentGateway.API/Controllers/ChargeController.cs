@@ -24,7 +24,8 @@ namespace RiskifiedPaymentGateway.API.Controllers
             _chargeValidator = chargeValidator;
             _chargingService = chargingService;
         }
-        [HttpPost()]
+
+        [HttpPost]
         public async Task<IActionResult> Charge(ChargeRequest request)
         {
             // Note: Normally I'll have ChargeRequest to implement IValidableObject which integrates the custom validation into the request pipeline.
@@ -48,13 +49,14 @@ namespace RiskifiedPaymentGateway.API.Controllers
             }
 
             // Note: Normally .NET returns 500 in case of uncaught exceptions but since the requirement says empty body I implmeneted this myself 
-            catch (Exception e)
+            catch (Exception)
             {
-                Debug.WriteLine(e);
                 return new ObjectResult(null) { StatusCode = (int)HttpStatusCode.InternalServerError };
 
             }
         }
+
+
 
         private bool IsChargeRequestValid(ChargeRequest request)
         {
