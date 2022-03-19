@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using RiskifiedPaymentGateway.Charging.BL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
